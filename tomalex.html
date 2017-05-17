@@ -11,6 +11,14 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>Tomalex</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#kubi").click(function(){
+                alert("(′・ω・‵)");
+            });
+        });
+    </script>
 </head>
 <body>
     <p></p>
@@ -28,10 +36,10 @@
                         Do you want to download tomalex.exe?
                     </p>
                     <p>
-                        <button class="btn btn-info">
+                        <button class="btn btn-info" id="yes">
                             Yes
                         </button>
-                        <button class="btn btn-default">
+                        <button class="btn btn-default" id="kubi">
                             Kubi
                         </button>
                     </p>
