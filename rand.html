@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <!-- 最新編譯和最佳化的 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <!-- 最新編譯和最佳化的 JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            var index = 0;
+            var array = [];
+            $(document).ready(function(){
+                $("#submit").click(function(){
+                    var newcontent = $("#input").val();
+                    if(newcontent=="")return;
+                    $("#list").after("\<li class=\"list-group-item\">"+newcontent+"\</li>");
+                    index++;
+                    array.push(newcontent);
+                    console.log(array);
+                });
+                $("#dice").click(function(){
+                    var z = Math.floor(Math.random()*index);
+                    alert(array[z]);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row"><p></p></div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="input">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" id="submit">Add</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+                    <button class="btn btn-primary" id="dice">Dice!</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <p></p>
+                    <ul class="list-group" id="list">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
