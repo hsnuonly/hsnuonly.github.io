@@ -13,47 +13,38 @@
         <script type="text/javascript">
             var index = 0;
             var array = [];
-            $(document).ready(function(){
-                $("#submit").click(function(){
-                    var newcontent = $("#input").val();
-                    $("#input").val("");
-                    if(newcontent=="")return;
-                    $("#list").after("\<li class=\"list-group-item\">"+newcontent+"\</li>");
-                    index++;
-                    array.push(newcontent);
-                    console.log(array);
-                });
-                $("#dice").click(function(){
-                    var z = Math.floor(Math.random()*index);
-                    alert(array[z]);
-                });
-            });
+            function submit(){
+                var newcontent = $("#input").val();
+                $("#input").val("");
+                if(newcontent=="")return;
+                $("#list").append("\<li class=\"list-group-item\">"+newcontent+"\</li>");
+                index++;
+                array.push(newcontent);
+                console.log(array);
+            }
+            function dice(){
+                var z = Math.floor(Math.random()*index);
+                alert(array[z]);
+            }
         </script>
     </head>
     <body>
         <div class="container">
-            <div class="row"><p></p></div>
-            <div class="row">
+            <div class="row" style="margin-top:1em">
                 <div class="col-xs-6">
                     <div class="input-group">
                         <input type="text" class="form-control" id="input">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" id="submit">Add</button>
+                            <button class="btn btn-primary" type="button" onclick="submit()">Add</button>
                         </span>
                     </div>
                 </div>
-                <div class="col-xs-2"></div>
-                    <button class="btn btn-primary" id="dice">Dice!</button>
-                </div>
+                <button class="btn btn-primary" onclick="dice()">Dice!</button>
             </div>
             <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                    <p></p>
-                    <ul class="list-group" id="list">
-                        
-                    </ul>
-                </div>
+                <ul class="list-group col-xs-6 col-xs-offset-3" id="list" style="margin-top:1em">
+                    
+                </ul>
             </div>
         </div>
     </body>
