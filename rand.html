@@ -11,21 +11,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-            var index = 0;
-            var array = [];
             function submit(){
                 var newcontent = $("#input").val();
                 $("#input").val("");
                 if(newcontent=="")return;
-                $("#list").append("\<li class=\"list-group-item\">"+newcontent+"\</li>");
-                index++;
-                array.push(newcontent);
-                console.log(array);
+                var template = String.raw`<li class="list-group-item">`+newcontent+String.raw`</li>`;
+                $("#list").append(template);
             }
             function dice(){
-                var z = Math.floor(Math.random()*index);
-                alert(array[z]);
+                var a = $(".list-group-item");
+                var len = a.length;
+                alert(a[Math.floor(Math.random()*len)].innerText);
             }
+            $(document).ready(function () {
+                $("#clearBtn").click(function(){
+                    $("#list").empty();
+                });
+            });
         </script>
     </head>
     <body>
@@ -39,7 +41,9 @@
                         </span>
                     </div>
                 </div>
+                
                 <button class="btn btn-primary" onclick="dice()">Dice!</button>
+                <button type="button" class="btn btn-danger" id="clearBtn">Clear</button>
             </div>
             <div class="row">
                 <ul class="list-group col-xs-6 col-xs-offset-3" id="list" style="margin-top:1em">
